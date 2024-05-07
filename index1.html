@@ -29,22 +29,33 @@
 				<!-- another search field -->
 				<input
 					type="text"
-                    id="search-field2"
+					id="search-field2"
 					placeholder="Search here"
-					class="input input-bordered w-full max-w-xs"/>
-				<button onclick="handleSearch2()" class="btn btn-active btn-primary">SEARCH</button>
+					class="input input-bordered w-full max-w-xs"
+				/>
+				<button
+					onclick="handleSearch2()"
+					class="btn btn-active btn-primary"
+				>
+					SEARCH
+				</button>
 			</section>
 
 			<!-- search result -->
 			<section>
+				<div id="loading-spinner" class="text-center my-40 hidden">
+					<span
+						class="loading loading-spinner text-primary loading-lg"
+					></span>
+				</div>
 				<div
 					id="phone-container"
 					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
 				></div>
-                <!-- show all button -->
-                <div id="show-all-container" class="hidden">
-                    <button class="btn btn-accent">Show All</button>
-                </div>
+				<!-- show all button -->
+				<div id="show-all-container" class="hidden">
+					<button class="btn btn-accent">Show All</button>
+				</div>
 			</section>
 		</main>
 		<footer></footer>
