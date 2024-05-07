@@ -27,7 +27,7 @@
 					SEARCH
 				</button>
 				<!-- another search field -->
-				<input
+				<!-- <input
 					type="text"
 					id="search-field2"
 					placeholder="Search here"
@@ -38,11 +38,12 @@
 					class="btn btn-active btn-primary"
 				>
 					SEARCH
-				</button>
+				</button> -->
 			</section>
 
 			<!-- search result -->
 			<section>
+				<!-- soinner or loader -->
 				<div id="loading-spinner" class="text-center my-40 hidden">
 					<span
 						class="loading loading-spinner text-primary loading-lg"
@@ -53,8 +54,10 @@
 					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
 				></div>
 				<!-- show all button -->
-				<div id="show-all-container" class="hidden">
-					<button class="btn btn-accent">Show All</button>
+				<div id="show-all-container" class="hidden text-center my-8">
+					<button class="btn btn-accent" onclick="handleShowAll()">
+						Show All
+					</button>
 				</div>
 			</section>
 		</main>
