@@ -23,14 +23,14 @@ const displayPhones = (phones, isShowAll) => {
 	} else {
 		showAllContainer.classList.add("hidden");
 	}
-    console.log('is show all', isShowAll);
+	console.log("is show all", isShowAll);
 	// display only first 12 phones if not show All
-	if(!isShowAll){
-        phones = phones.slice(0, 12);
-    }
+	if (!isShowAll) {
+		phones = phones.slice(0, 12);
+	}
 
 	phones.forEach((phone) => {
-		// console.log(phone);
+		console.log(phone);
 		// 2 creat a div
 		const phoneCard = document.createElement("div");
 		phoneCard.classList = `card bg-gray-100 p-4 shadow-xl`;
@@ -43,8 +43,8 @@ const displayPhones = (phones, isShowAll) => {
 			<p>
 				If a dog chews shoes whose shoes does he choose?
 			</p>
-			<div class="card-actions justify-end">
-				<button class="btn btn-primary">Buy Now</button>
+			<div class="card-actions justify-center">
+				<button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary">Show Details</button>
 			</div>
 		</div>
         `;
@@ -52,13 +52,24 @@ const displayPhones = (phones, isShowAll) => {
 		phoneContainer.appendChild(phoneCard);
 	});
 
-    // hide loading spinner
-    toggleLoadingSpinner(false);
+	// hide loading spinner
+	toggleLoadingSpinner(false);
+};
+
+// handle show detail
+const handleShowDetail = async (id) => {
+	console.log("click show details", id);
+	// load single phone data
+	const res = await fetch(
+		`https://openapi.programming-hero.com/api/phone/${id}`
+	);
+    const data = await res.json();
+    console.log(data)
 };
 
 // handle search button
 const handleSearch = (isShowAll) => {
-    toggleLoadingSpinner(true);
+	toggleLoadingSpinner(true);
 	const searchField = document.getElementById("search-field");
 	const searchText = searchField.value;
 	console.log(searchText);
@@ -75,19 +86,16 @@ const handleSearch = (isShowAll) => {
 
 const toggleLoadingSpinner = (isLoading) => {
 	const loadingSpinner = document.getElementById("loading-spinner");
-	if(isLoading){
-        loadingSpinner.classList.remove("hidden");
-    }
-    else{
-        loadingSpinner.classList.add('hidden');
-    }
+	if (isLoading) {
+		loadingSpinner.classList.remove("hidden");
+	} else {
+		loadingSpinner.classList.add("hidden");
+	}
 };
 
 // handle show all
-const handleShowAll = () =>{
-    handleSearch(true);
-}
-
-
+const handleShowAll = () => {
+	handleSearch(true);
+};
 
 // loadPhone();
